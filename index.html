@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>$42069 卐 puff puff pass 卐</title>
+<meta name="description" content="$42069 — neon cyberpunk stoner-degen party. on solana. don't bogart." />
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=VT323&family=Press+Start+2P&family=Bungee&family=Major+Mono+Display&family=Creepster&family=Noto+Sans+Arabic:wght@400;700;900&family=Noto+Sans+JP:wght@400;700;900&display=swap" />
+<link rel="stylesheet" href="42069.css" />
+</head>
+
+<body>
+
+  <!-- ─────  GLOBAL FX LAYERS  ───── -->
+  <div class="mood-strobe" aria-hidden="true"></div>
+  <div class="page-grid" aria-hidden="true"></div>
+  <div class="page-vignette" aria-hidden="true"></div>
+  <div class="page-grain" aria-hidden="true"></div>
+  <div class="page-scanlines" aria-hidden="true"></div>
+
+  <!-- smoke layers -->
+  <div class="smoke-layer back" aria-hidden="true">
+    <div class="smoke-puff p1"></div>
+    <div class="smoke-puff p2"></div>
+    <div class="smoke-puff p3"></div>
+    <div class="smoke-puff p5"></div>
+  </div>
+  <div class="smoke-rise" aria-hidden="true"></div>
+  <div class="smoke-layer front" aria-hidden="true">
+    <div class="smoke-puff p4"></div>
+    <div class="smoke-puff p6"></div>
+  </div>
+
+  <!-- animated turbulent smoke -->
+  <svg class="smoke-wisp-svg" aria-hidden="true" preserveAspectRatio="none">
+    <defs>
+      <filter id="smoke-turb" x="-10%" y="-10%" width="120%" height="120%">
+        <feTurbulence type="fractalNoise" baseFrequency="0.008 0.012" numOctaves="2" seed="3">
+          <animate attributeName="baseFrequency" dur="22s" values="0.008 0.012;0.014 0.02;0.008 0.012" repeatCount="indefinite" />
+        </feTurbulence>
+        <feDisplacementMap in="SourceGraphic" scale="80" />
+        <feGaussianBlur stdDeviation="3" />
+      </filter>
+      <linearGradient id="smoke-grad" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0%"  stop-color="#00ff66" stop-opacity="0.32"/>
+        <stop offset="40%" stop-color="#b8ff00" stop-opacity="0.18"/>
+        <stop offset="80%" stop-color="#003d1c" stop-opacity="0"/>
+      </linearGradient>
+    </defs>
+    <rect width="100%" height="100%" fill="url(#smoke-grad)" filter="url(#smoke-turb)"/>
+  </svg>
+
+  <!-- ambient sticker + sys-error layers -->
+  <!-- sys-error toast layer -->
+  <div class="sys-errors" id="sys-errors" aria-hidden="true"></div>
+
+  <!-- shared SVG filters -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <filter id="stamp-roughen">
+        <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="7"/>
+        <feDisplacementMap in="SourceGraphic" scale="2.5"/>
+      </filter>
+    </defs>
+  </svg>
+  <div class="cursor-trail" id="cursor-trail" aria-hidden="true"></div>
+
+  <!-- ─────  TOP MARQUEE  ───── -->
+  <div class="marquee marquee-top">
+    <div class="marquee-inner">
+      $42069 ✦ puff puff pass ✦ don't bogart the bag ✦ 4:20 ALWAYS ✦ pass it pass it pass it ✦ $$$ ✦ $42069 ✦ bullish on the haze ✦ 69% in 4:20 ✦ stay smoked ✦
+    </div>
+  </div>
+
+  <!-- ─────  HERO  ───── -->
+  <header class="hero">
+
+    <div class="hero-logo-wrap">
+      <div class="hero-logo-smoke" aria-hidden="true">
+        <span class="puff p1"></span>
+        <span class="puff p2"></span>
+        <span class="puff p3"></span>
+        <span class="puff p4"></span>
+        <span class="puff p5"></span>
+        <span class="puff p6"></span>
+        <span class="puff p7"></span>
+      </div>
+      <img src="42069coin-bud-logo.png" alt="$42069 COIN" class="hero-logo bud" />
+    </div>
+
+    <div class="hero-tag">
+      <span class="glow">light it up</span> · <span>$42069</span> · <span class="pop">pass it on</span>
+    </div>
+    <p class="hero-sub">// solana · LP burned · 0/0 tax · 4:20 always //</p>
+
+    <div class="ca-row">
+      <span class="ca-label">CONTRACT &gt;&gt;</span>
+      <button class="ca-pill" onclick="copyCA()">
+        <span id="ca-text" class="ca-mono">5CxtvaR1SskwLxfzHGurx8Enu8bgSTPyWF3YP4sWpump</span>
+        <span id="ca-icon" class="ca-copy-i">⎘</span>
+      </button>
+    </div>
+
+  </header>
+
+  <!-- ─────  THREE LINK TILES  ───── -->
+  <section class="tiles-wrap">
+    <div class="tiles-eyebrow">// THREE PORTALS · ENTER THE HAZE //</div>
+
+    <div class="tile-grid">
+
+      <!-- TILE 1: TICKER / CONTRACT -->
+      <button class="tile t-ticker" onclick="copyCA()" aria-label="copy contract">
+        <div class="tile-smoke"></div>
+        <div class="tile-watermark" aria-hidden="true">
+          <svg viewBox="0 0 64 64"><g><path d="M32 60 L32 8"/><path d="M32 30 C 30 20, 22 8, 14 6  C 16 14, 18 22, 24 28  C 16 24, 8 22, 4 26  C 10 30, 18 34, 26 34  C 20 38, 16 44, 16 50  C 22 46, 28 40, 30 34 Z"/><path d="M32 30 C 34 20, 42 8, 50 6  C 48 14, 46 22, 40 28  C 48 24, 56 22, 60 26  C 54 30, 46 34, 38 34  C 44 38, 48 44, 48 50  C 42 46, 36 40, 34 34 Z"/><path d="M32 44 C 30 38, 24 32, 18 32  C 22 38, 26 44, 30 48 Z"/><path d="M32 44 C 34 38, 40 32, 46 32  C 42 38, 38 44, 34 48 Z"/></g></svg>
+        </div>
+        <div class="tile-head">
+          <span class="tile-num">01 / 03</span>
+          <span class="tile-tag acid">COPY · CA</span>
+        </div>
+        <div class="tile-art tile-art-img">
+          <img src="42069-cult-logo.png" alt="42069 CULT" class="tile-logo-img" />
+        </div>
+        <div class="tile-title">$42069</div>
+        <div class="tile-sub">tap to copy contract</div>
+        <div class="tile-cta">
+          <span>COPY CA</span>
+          <span class="arr">⎘ →</span>
+        </div>
+      </button>
+
+      <!-- TILE 2: DEX SCREEN -->
+      <a class="tile t-dex" href="https://dexscreener.com/solana/dcqnsnwcblgeyw6vgbpnlzrr8pbbjovergra8qapguhw" target="_blank" rel="noopener" aria-label="open dexscreener">
+        <div class="tile-smoke"></div>
+        <div class="tile-watermark" aria-hidden="true">
+          <svg viewBox="0 0 64 64"><g><path d="M32 60 L32 8"/><path d="M32 30 C 30 20, 22 8, 14 6  C 16 14, 18 22, 24 28  C 16 24, 8 22, 4 26  C 10 30, 18 34, 26 34  C 20 38, 16 44, 16 50  C 22 46, 28 40, 30 34 Z"/><path d="M32 30 C 34 20, 42 8, 50 6  C 48 14, 46 22, 40 28  C 48 24, 56 22, 60 26  C 54 30, 46 34, 38 34  C 44 38, 48 44, 48 50  C 42 46, 36 40, 34 34 Z"/><path d="M32 44 C 30 38, 24 32, 18 32  C 22 38, 26 44, 30 48 Z"/><path d="M32 44 C 34 38, 40 32, 46 32  C 42 38, 38 44, 34 48 Z"/></g></svg>
+        </div>
+        <div class="tile-head">
+          <span class="tile-num">02 / 03</span>
+          <span class="tile-tag">LIVE · CHART</span>
+        </div>
+        <div class="tile-art tile-art-img">
+          <img src="owl-graphic.png" alt="owl mascot" class="tile-owl-img" />
+        </div>
+        <div class="tile-title">DEX SCREEN</div>
+        <div class="tile-sub">candles · charts · the cypher</div>
+        <div class="tile-cta">
+          <span>OPEN CHART</span>
+          <span class="arr">↗</span>
+        </div>
+      </a>
+
+      <!-- TILE 3: X / TWITTER -->
+      <a class="tile t-x" href="https://x.com/42069_coin" target="_blank" rel="noopener" aria-label="open X account">
+        <div class="tile-smoke"></div>
+        <div class="tile-watermark" aria-hidden="true">
+          <svg viewBox="0 0 64 64"><g><path d="M32 60 L32 8"/><path d="M32 30 C 30 20, 22 8, 14 6  C 16 14, 18 22, 24 28  C 16 24, 8 22, 4 26  C 10 30, 18 34, 26 34  C 20 38, 16 44, 16 50  C 22 46, 28 40, 30 34 Z"/><path d="M32 30 C 34 20, 42 8, 50 6  C 48 14, 46 22, 40 28  C 48 24, 56 22, 60 26  C 54 30, 46 34, 38 34  C 44 38, 48 44, 48 50  C 42 46, 36 40, 34 34 Z"/><path d="M32 44 C 30 38, 24 32, 18 32  C 22 38, 26 44, 30 48 Z"/><path d="M32 44 C 34 38, 40 32, 46 32  C 42 38, 38 44, 34 48 Z"/></g></svg>
+        </div>
+        <div class="tile-head">
+          <span class="tile-num">03 / 03</span>
+          <span class="tile-tag pink">FOLLOW · X</span>
+        </div>
+        <div class="tile-art tile-art-img">
+          <div class="avatar-420">
+            <img src="420-avatar.png" alt="420 avatar" class="avatar-420-img" />
+          </div>
+        </div>
+        <div class="tile-title">@42069_coin</div>
+        <div class="tile-sub">degen comms · posts · prophecy</div>
+        <div class="tile-cta">
+          <span>FOLLOW</span>
+          <span class="arr">↗</span>
+        </div>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- ─────  SCRIPTURE (one small block, total schizo) ───── -->
+  <section class="scripture">
+    <div class="scripture-eyebrow">// THE ONLY DOCTRINE //</div>
+    <p>the smoke is the <span class="pop">signal</span>. the bag is the <span class="acid">prayer</span>. the chart is a <span class="pink">cathedral</span>.</p>
+    <p><span class="pop">$42069</span> doesn't moon. it <em>blazes</em>. you don't sell. you <em>pass it</em>.</p>
+    <div class="sig">— transmitted from cypher 4:20 · do not extinguish</div>
+  </section>
+
+  <!-- ─────  BOTTOM MARQUEE  ───── -->
+  <div class="marquee marquee-bottom">
+    <div class="marquee-inner reverse">
+      $42069 ✦ light it · pass it · don't sell it ✦ chart only goes up when you're high ✦ 4:20 IS NOW ✦ $$$ ✦ haze index 100/100 ✦ $42069 ✦ stay smoked ✦
+    </div>
+  </div>
+
+  <!-- ─────  FOOTER  ───── -->
+  <footer class="footer">
+    <div class="ft-h">$42069</div>
+    <div>a work of fiction · a real coin · both at once · © 4:20 — ∞</div>
+    <div class="ft-sub">all transmissions logged · no financial advice · puff responsibly</div>
+  </footer>
+
+  <!-- ─────  EPILEPSY  ───── -->
+  <div class="epilepsy-warning" id="epilepsy-warning">
+    <div class="ew-head">⚠ FLASH WARNING</div>
+    <div>contains rapid flashing + smoke. may overwhelm.</div>
+    <button onclick="reduceFlashing()">CHILL THE STROBE</button>
+    <button class="ew-dismiss" onclick="document.getElementById('epilepsy-warning').classList.add('dismissed')">DISMISS</button>
+  </div>
+
+  <script src="42069-fx.js"></script>
+</body>
+</html>
