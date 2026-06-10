@@ -236,3 +236,171 @@
   };
 
 })();
+
+/* ═══════════════════════════════════════════════════════════════════
+   V2 ADDITIONS — 4:20 countdown, haze terminal, swap modal, reveals
+   ═══════════════════════════════════════════════════════════════════ */
+(function(){
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ─── NEXT 4:20 COUNTDOWN ─────────────────────────────────── */
+  const segH = document.getElementById('c420-h');
+  const segM = document.getElementById('c420-m');
+  const segS = document.getElementById('c420-s');
+  const c420 = document.querySelector('.clock420');
+  const c420Label = document.getElementById('c420-label');
+  const c420Sub = document.getElementById('c420-sub');
+  let partyFired = false;
+
+  function next420(from) {
+    // candidates: today 4:20 AM, today 4:20 PM, tomorrow 4:20 AM
+    const c = [];
+    for (let addDay = 0; addDay <= 1; addDay++) {
+      for (const h of [4, 16]) {
+        const d = new Date(from);
+        d.setDate(d.getDate() + addDay);
+        d.setHours(h, 20, 0, 0);
+        if (d > from) c.push(d);
+      }
+    }
+    c.sort((a, b) => a - b);
+    return c[0];
+  }
+
+  function pad(n){ return String(n).padStart(2, '0'); }
+
+  function tick420() {
+    if (!segH) return;
+    const now = new Date();
+    const isTime = (now.getHours() === 4 || now.getHours() === 16) && now.getMinutes() === 20;
+
+    if (isTime) {
+      c420.classList.add('its-time');
+      c420Label.textContent = 'IT IS 4:20';
+      segH.textContent = '04'; segM.textContent = '20';
+      segS.textContent = pad(now.getSeconds());
+      c420Sub.textContent = 'light it. now. this is not a drill.';
+      if (!partyFired && !window.__schizo_no_popups && typeof window.spawnPopup === 'function') {
+        partyFired = true;
+        window.spawnPopup('🚨 4:20 ALERT 🚨', 'the prophecy fulfills itself · spark it · pass it · blessed be the bag');
+      }
+      return;
+    }
+
+    partyFired = false;
+    c420.classList.remove('its-time');
+    c420Label.textContent = 'NEXT 4:20 IN';
+    c420Sub.textContent = 'local time · the blunt waits for no one';
+    const diff = next420(now) - now;
+    const s = Math.floor(diff / 1000);
+    segH.textContent = pad(Math.floor(s / 3600));
+    segM.textContent = pad(Math.floor((s % 3600) / 60));
+    segS.textContent = pad(s % 60);
+  }
+  tick420();
+  setInterval(tick420, 1000);
+
+  /* ─── HAZE TERMINAL — typed status lines ──────────────────── */
+  const htLine = document.getElementById('ht-line');
+  const HT_MSGS = [
+    'uplink established · haze.net node 0x42069',
+    'LP status: BURNED · ashes verified on-chain',
+    'tax scan complete: 0/0 · narc-free zone',
+    'supply audit: 1,000,000,000 · no mint authority',
+    'diamond hand integrity: 100% · grip secured',
+    'rotation protocol: puff puff PASS · enforced',
+    'cypher 4:20 broadcasting · do not extinguish',
+    'paperhand firewall: ACTIVE · weak sells rejected',
+    'munchie reserves: critical · resupply at 3am',
+    'chart cathedral doors: OPEN · candles lit',
+  ];
+  let htIdx = 0;
+  function typeLine(text, done) {
+    if (!htLine) return;
+    if (reducedMotion) { htLine.textContent = text; if (done) setTimeout(done, 4200); return; }
+    htLine.textContent = '';
+    let i = 0;
+    const iv = setInterval(() => {
+      htLine.textContent = text.slice(0, ++i);
+      if (i >= text.length) {
+        clearInterval(iv);
+        if (done) setTimeout(done, 3400);
+      }
+    }, 28);
+  }
+  function htCycle() {
+    typeLine(HT_MSGS[htIdx % HT_MSGS.length], htCycle);
+    htIdx++;
+  }
+  if (htLine) setTimeout(htCycle, 900);
+
+  /* ─── SWAP MODAL ──────────────────────────────────────────── */
+  const overlay = document.getElementById('swap-overlay');
+  let lastFocus = null;
+  window.openSwap = function() {
+    if (!overlay) return;
+    lastFocus = document.activeElement;
+    overlay.hidden = false;
+    const first = overlay.querySelector('.sw-opt');
+    if (first) first.focus();
+    if (!window.__schizo_no_popups && typeof window.spawnPopup === 'function' && Math.random() > .6) {
+      window.spawnPopup('DEALER MENU OPEN', 'three plugs · all legit · pick one · no haggling');
+    }
+  };
+  window.closeSwap = function() {
+    if (!overlay) return;
+    overlay.hidden = true;
+    if (lastFocus && lastFocus.focus) lastFocus.focus();
+  };
+  if (overlay) {
+    overlay.addEventListener('click', (e) => { if (e.target === overlay) window.closeSwap(); });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !overlay.hidden) window.closeSwap();
+    });
+  }
+
+  /* ─── SCROLL REVEALS ──────────────────────────────────────── */
+  const rvEls = document.querySelectorAll('.rv');
+  if ('IntersectionObserver' in window && rvEls.length && !reducedMotion) {
+    document.documentElement.classList.add('rv-armed');
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(en => {
+        if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -5% 0px' });
+    rvEls.forEach(el => io.observe(el));
+    // belt + suspenders: if anything is still hidden after 4s, show everything
+    setTimeout(() => {
+      rvEls.forEach(el => el.classList.add('in'));
+    }, 4000);
+  }
+
+  /* ─── HOTBOX EASTER EGG — tap the bud to thicken the haze ─── */
+  const bud = document.getElementById('hero-bud');
+  let puffs = 0;
+  if (bud) {
+    bud.style.cursor = 'pointer';
+    bud.addEventListener('click', () => {
+      puffs++;
+      const op = Math.min(2.2, 1 + puffs * 0.18);
+      document.documentElement.style.setProperty('--smoke-opacity', op.toFixed(2));
+      document.documentElement.style.setProperty('--grain-opacity', Math.min(.7, .45 + puffs * .03).toFixed(2));
+      if (puffs === 4 && typeof window.spawnPopup === 'function' && !window.__schizo_no_popups) {
+        window.spawnPopup('HOTBOX INITIATED', 'windows up · towels down · visibility dropping');
+      }
+      if (puffs >= 9) {
+        puffs = 0;
+        document.documentElement.style.setProperty('--smoke-opacity', '1');
+        document.documentElement.style.setProperty('--grain-opacity', '.45');
+        if (typeof window.spawnPopup === 'function' && !window.__schizo_no_popups) {
+          window.spawnPopup('AIRED OUT', 'someone opened a window · haze reset · run it back');
+        }
+      }
+    });
+  }
+
+  /* ─── TOUCH DEVICES — kill cursor trail, keep the chaos ───── */
+  if (window.matchMedia('(pointer: coarse)').matches) {
+    window.__schizo_no_stickers = true;
+  }
+})();
