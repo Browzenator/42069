@@ -3,9 +3,23 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>$42069 - puff puff pass</title>
-<meta name="description" content="$42069 — neon cyberpunk stoner-degen party. on solana. don't bogart." />
+<title>$42069 — puff puff pass</title>
+<meta name="description" content="$42069 — neon cyberpunk stoner-degen party. on solana. LP burned · 0/0 tax · 4:20 always. don't bogart." />
 
+<!-- Open Graph / Twitter -->
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://fourtwentysixtynine.xyz/" />
+<meta property="og:title" content="$42069 — puff puff pass" />
+<meta property="og:description" content="neon cyberpunk stoner-degen party on solana · LP burned · 0/0 tax · 4:20 always" />
+<meta property="og:image" content="https://fourtwentysixtynine.xyz/42069coin-bud-logo.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="$42069 — puff puff pass" />
+<meta name="twitter:description" content="light it · pass it · don't sell it · on solana" />
+<meta name="twitter:image" content="https://fourtwentysixtynine.xyz/42069coin-bud-logo.png" />
+<meta name="theme-color" content="#02060b" />
+
+<link rel="icon" type="image/png" href="420-avatar.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=VT323&family=Press+Start+2P&family=Bungee&family=Major+Mono+Display&family=Creepster&family=Noto+Sans+Arabic:wght@400;700;900&family=Noto+Sans+JP:wght@400;700;900&display=swap" />
 <link rel="stylesheet" href="42069.css" />
 </head>
@@ -51,7 +65,6 @@
     <rect width="100%" height="100%" fill="url(#smoke-grad)" filter="url(#smoke-turb)"/>
   </svg>
 
-  <!-- ambient sticker + sys-error layers -->
   <!-- sys-error toast layer -->
   <div class="sys-errors" id="sys-errors" aria-hidden="true"></div>
 
@@ -86,13 +99,21 @@
         <span class="puff p6"></span>
         <span class="puff p7"></span>
       </div>
-      <img src="42069coin-bud-logo.png" alt="$42069 COIN" class="hero-logo bud" />
+      <img src="42069coin-bud-logo.png" alt="$42069 COIN" class="hero-logo bud" id="hero-bud" />
     </div>
 
     <div class="hero-tag">
       <span class="glow">light it up</span> · <span>$42069COIN</span> · <span class="pop">pass it on</span>
     </div>
     <p class="hero-sub">// solana · LP burned · 0/0 tax · 4:20 always //</p>
+
+    <!-- haze terminal — live feed readout -->
+    <div class="haze-term" aria-hidden="true">
+      <span class="ht-dot"></span>
+      <span class="ht-label">HAZE.NET&gt;</span>
+      <span class="ht-line" id="ht-line">establishing uplink…</span>
+      <span class="ht-caret">▮</span>
+    </div>
 
     <div class="ca-row">
       <span class="ca-label">CONTRACT &gt;&gt;</span>
@@ -102,10 +123,25 @@
       </button>
     </div>
 
+    <div class="hero-cta-row">
+      <button class="btn-blaze" onclick="openSwap()">BLAZE IN · BUY $42069</button>
+      <a class="btn-ghost" href="#chart">SEE THE CHART ↓</a>
+    </div>
+
   </header>
 
+  <!-- ─────  NEXT 4:20 COUNTDOWN  ───── -->
+  <section class="clock420 rv">
+    <div class="c420-eyebrow">// SYNCHRONIZE YOUR SESH //</div>
+    <div class="c420-label" id="c420-label">NEXT 4:20 IN</div>
+    <div class="c420-display" id="c420-display" role="timer" aria-label="countdown to next 4:20">
+      <span class="c420-seg" id="c420-h">--</span><span class="c420-colon">:</span><span class="c420-seg" id="c420-m">--</span><span class="c420-colon">:</span><span class="c420-seg" id="c420-s">--</span>
+    </div>
+    <div class="c420-sub" id="c420-sub">local time · the blunt waits for no one</div>
+  </section>
+
   <!-- ─────  THREE LINK TILES  ───── -->
-  <section class="tiles-wrap">
+  <section class="tiles-wrap rv">
     <div class="tiles-eyebrow">// THREE PORTALS · ENTER THE HAZE //</div>
 
     <div class="tile-grid">
@@ -121,7 +157,7 @@
           <span class="tile-tag acid">COPY · CA</span>
         </div>
         <div class="tile-art tile-art-img">
-          <img src="42069-cult-logo.png" alt="42069 CULT" class="tile-logo-img" />
+          <img src="42069-cult-logo.png" alt="42069 CULT" class="tile-logo-img" loading="lazy" />
         </div>
         <div class="tile-title">$42069</div>
         <div class="tile-sub">tap to copy contract</div>
@@ -142,7 +178,7 @@
           <span class="tile-tag">LIVE · CHART</span>
         </div>
         <div class="tile-art tile-art-img">
-          <img src="owl-graphic.png" alt="owl mascot" class="tile-owl-img" />
+          <img src="owl-graphic.png" alt="owl mascot" class="tile-owl-img" loading="lazy" />
         </div>
         <div class="tile-title">DEX SCREEN</div>
         <div class="tile-sub">candles · charts · the cypher</div>
@@ -164,7 +200,7 @@
         </div>
         <div class="tile-art tile-art-img">
           <div class="avatar-420">
-            <img src="420-avatar.png" alt="420 avatar" class="avatar-420-img" />
+            <img src="420-avatar.png" alt="420 avatar" class="avatar-420-img" loading="lazy" />
           </div>
         </div>
         <div class="tile-title">@42069_coin</div>
@@ -178,8 +214,56 @@
     </div>
   </section>
 
-  <!-- ─────  SCRIPTURE (one small block, total schizo) ───── -->
-  <section class="scripture">
+  <!-- ─────  LIVE CHART  ───── -->
+  <section class="chart-zone rv" id="chart">
+    <div class="chart-eyebrow">// THE CATHEDRAL · LIVE FEED //</div>
+    <div class="chart-frame">
+      <div class="chart-frame-head">
+        <span class="cf-dot r"></span><span class="cf-dot y"></span><span class="cf-dot g"></span>
+        <span class="cf-title">$42069 / SOL · dexscreener uplink</span>
+      </div>
+      <iframe
+        src="https://dexscreener.com/solana/dcqnsnwcblgeyw6vgbpnlzrr8pbbjovergra8qapguhw?embed=1&theme=dark&trades=0&info=0"
+        title="$42069 live chart"
+        loading="lazy"
+        allow="clipboard-write"
+      ></iframe>
+    </div>
+    <div class="chart-note">green candles only · red candles are a hallucination</div>
+  </section>
+
+  <!-- ─────  HOW TO BUY  ───── -->
+  <section class="buy-zone rv" id="buy">
+    <div class="buy-eyebrow">// HOW TO ENTER THE HAZE //</div>
+
+    <ol class="buy-steps">
+      <li class="buy-step">
+        <span class="bs-num">STEP 1</span>
+        <span class="bs-title">GET A WALLET</span>
+        <span class="bs-body">phantom or solflare. guard the seed phrase like it's the last lighter at the function.</span>
+      </li>
+      <li class="buy-step">
+        <span class="bs-num">STEP 2</span>
+        <span class="bs-title">LOAD SOL</span>
+        <span class="bs-body">send solana to your wallet from any exchange. gas money for the haze-mobile.</span>
+      </li>
+      <li class="buy-step">
+        <span class="bs-num">STEP 3</span>
+        <span class="bs-title">PASTE THE CA</span>
+        <span class="bs-body">copy the contract above. paste it in the swap. verify it matches. narcs deploy fakes.</span>
+      </li>
+      <li class="buy-step">
+        <span class="bs-num">STEP 4</span>
+        <span class="bs-title">PUFF PUFF HOLD</span>
+        <span class="bs-body">swap sol for $42069. don't bogart. don't paperhand. pass it on.</span>
+      </li>
+    </ol>
+
+    <button class="btn-blaze big" onclick="openSwap()">OPEN SWAP PORTAL</button>
+  </section>
+
+  <!-- ─────  SCRIPTURE  ───── -->
+  <section class="scripture rv">
     <div class="scripture-eyebrow">// THE ONLY DOCTRINE //</div>
     <p>the smoke is the <span class="pop">signal</span>. the bag is the <span class="acid">prayer</span>. the chart is a <span class="pink">cathedral</span>.</p>
     <p><span class="pop">$42069</span> doesn't moon. it <em>blazes</em>. you don't sell. you <em>pass it</em>.</p>
@@ -199,6 +283,34 @@
     <div>a work of fiction · a real coin · both at once · © 4:20 — ∞</div>
     <div class="ft-sub">all transmissions logged · no financial advice · puff responsibly</div>
   </footer>
+
+  <!-- ─────  SWAP MODAL  ───── -->
+  <div class="swap-overlay" id="swap-overlay" hidden>
+    <div class="swap-modal" role="dialog" aria-modal="true" aria-labelledby="swap-title">
+      <div class="sw-head">
+        <span class="sw-title" id="swap-title">SWAP PORTAL · PICK YOUR DEALER</span>
+        <button class="sw-x" onclick="closeSwap()" aria-label="close swap portal">×</button>
+      </div>
+      <div class="sw-body">
+        <a class="sw-opt" href="https://jup.ag/swap/SOL-5CxtvaR1SskwLxfzHGurx8Enu8bgSTPyWF3YP4sWpump" target="_blank" rel="noopener">
+          <span class="sw-name">JUPITER</span>
+          <span class="sw-desc">best route · aggregated · the connoisseur's plug</span>
+          <span class="sw-arr">↗</span>
+        </a>
+        <a class="sw-opt" href="https://raydium.io/swap/?inputMint=sol&outputMint=5CxtvaR1SskwLxfzHGurx8Enu8bgSTPyWF3YP4sWpump" target="_blank" rel="noopener">
+          <span class="sw-name">RAYDIUM</span>
+          <span class="sw-desc">straight from the pool · OG solana dex</span>
+          <span class="sw-arr">↗</span>
+        </a>
+        <a class="sw-opt" href="https://pump.fun/coin/5CxtvaR1SskwLxfzHGurx8Enu8bgSTPyWF3YP4sWpump" target="_blank" rel="noopener">
+          <span class="sw-name">PUMP.FUN</span>
+          <span class="sw-desc">the birthplace · where the bud was first grown</span>
+          <span class="sw-arr">↗</span>
+        </a>
+        <button class="sw-ca" onclick="copyCA()">⎘ or copy the CA · verify before you light</button>
+      </div>
+    </div>
+  </div>
 
   <!-- ─────  EPILEPSY  ───── -->
   <div class="epilepsy-warning" id="epilepsy-warning">
