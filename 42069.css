@@ -1363,3 +1363,226 @@ html.rv-armed .rv.in { opacity: 1; transform: none; }
   .lab-stamp { right: 4%; }
   .chart-frame iframe { height: 70vh; }
 }
+
+/* ═══════════════════════════════════════════════════════════════════
+   MATRIX MEME FORGE — image → digital-rain GIF generator
+   ═══════════════════════════════════════════════════════════════════ */
+.forge-zone {
+  position: relative; z-index: 10;
+  max-width: 760px;
+  margin: 0 auto 80px;
+  padding: 20px 16px;
+  text-align: center;
+}
+.forge-eyebrow {
+  font-family: var(--font-pixel);
+  font-size: 10px; letter-spacing: 4px;
+  color: var(--acid);
+  text-shadow: 0 0 8px var(--acid);
+  margin-bottom: 18px;
+}
+.forge-title {
+  font-family: var(--font-display);
+  font-size: clamp(20px, 3.2vw, 34px);
+  letter-spacing: 4px;
+  color: var(--bone);
+  text-shadow: 0 0 10px var(--toxic), 0 0 22px var(--toxic);
+  margin-bottom: 6px;
+}
+.forge-sub {
+  font-family: var(--font-mono);
+  font-size: 16px; letter-spacing: 2px;
+  color: var(--bone); opacity: .6;
+  margin-bottom: 24px;
+}
+
+.meme-forge {
+  border: 2px solid var(--toxic);
+  box-shadow: 0 0 28px rgba(0,255,102,.4), inset 0 0 20px rgba(0,255,102,.08);
+  background: rgba(0,0,0,.82);
+  text-align: left;
+}
+.meme-forge .forge-head {
+  display: flex; align-items: center; gap: 8px;
+  padding: 10px 14px;
+  background: rgba(0,255,102,.08);
+  border-bottom: 1px solid rgba(0,255,102,.35);
+}
+.meme-forge .forge-head .cf-title { margin-left: 8px; }
+.meme-forge .forge-body { padding: 22px 20px 24px; }
+
+/* dropzone */
+.meme-forge .dropzone {
+  display: block;
+  border: 2px dashed var(--kush);
+  padding: 34px 16px;
+  text-align: center;
+  cursor: pointer;
+  transition: all .15s ease;
+  background: rgba(0,255,102,.02);
+}
+.meme-forge .dropzone:hover,
+.meme-forge .dropzone.drag {
+  border-color: var(--toxic);
+  background: rgba(0,255,102,.06);
+  box-shadow: inset 0 0 24px rgba(0,255,102,.12);
+}
+.meme-forge .dropzone input { display: none; }
+.meme-forge .dz-main {
+  font-family: var(--font-display);
+  font-size: clamp(13px, 1.8vw, 16px);
+  letter-spacing: 2px;
+  color: var(--bone);
+  text-shadow: 0 0 8px rgba(0,255,102,.5);
+}
+.meme-forge .dz-hint {
+  font-family: var(--font-mono);
+  font-size: 15px; letter-spacing: 1px;
+  color: var(--acid); opacity: .7;
+  margin-top: 8px;
+}
+
+/* controls */
+.meme-forge .controls {
+  margin-top: 20px;
+  display: grid;
+  gap: 16px;
+}
+.meme-forge .row { display: flex; flex-direction: column; gap: 7px; }
+.meme-forge .row label {
+  font-family: var(--font-pixel);
+  font-size: 9px; letter-spacing: 2px;
+  color: var(--acid);
+  text-shadow: 0 0 6px rgba(184,255,0,.5);
+  display: flex; justify-content: space-between; align-items: center;
+}
+.meme-forge .row label span { color: var(--toxic); }
+
+.meme-forge input[type=range] {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 5px;
+  background: var(--deep);
+  border-radius: 2px;
+  cursor: pointer;
+}
+.meme-forge input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px; height: 16px;
+  background: var(--toxic);
+  border-radius: 50%;
+  box-shadow: 0 0 8px var(--toxic);
+  cursor: pointer;
+}
+.meme-forge input[type=range]::-moz-range-thumb {
+  width: 16px; height: 16px;
+  background: var(--toxic);
+  border: none;
+  border-radius: 50%;
+  box-shadow: 0 0 8px var(--toxic);
+  cursor: pointer;
+}
+.meme-forge select {
+  background: #021006;
+  color: var(--bone);
+  border: 1px solid var(--kush);
+  border-radius: 0;
+  padding: 9px 10px;
+  font-family: var(--font-mono);
+  font-size: 16px; letter-spacing: 1px;
+  cursor: pointer;
+}
+.meme-forge select:focus { outline: 2px solid var(--acid); }
+
+.meme-forge .btn-generate {
+  margin-top: 4px;
+  font-family: var(--font-display);
+  font-size: clamp(14px, 1.8vw, 18px);
+  letter-spacing: 3px;
+  padding: 15px;
+  color: #000;
+  background: linear-gradient(135deg, var(--toxic), var(--acid));
+  border: 2px solid var(--acid);
+  cursor: pointer;
+  text-transform: uppercase;
+  box-shadow: 0 0 24px rgba(0,255,102,.55), inset 0 0 14px rgba(255,255,255,.25);
+  transition: transform .15s, box-shadow .15s;
+}
+.meme-forge .btn-generate:hover:not(:disabled) {
+  transform: translateY(-2px) scale(1.01);
+  box-shadow: 0 0 44px rgba(184,255,0,.85), 0 0 90px rgba(0,255,102,.4);
+}
+.meme-forge .btn-generate:disabled {
+  background: #0f3d1f;
+  color: #0a5c25;
+  border-color: #0a5c25;
+  box-shadow: none;
+  cursor: not-allowed;
+}
+
+/* progress + status */
+.meme-forge .progress {
+  margin-top: 14px;
+  height: 6px;
+  background: var(--deep);
+  border-radius: 3px;
+  overflow: hidden;
+  display: none;
+}
+.meme-forge .progress-bar {
+  height: 100%;
+  width: 0%;
+  background: var(--toxic);
+  box-shadow: 0 0 8px var(--toxic);
+  transition: width .15s linear;
+}
+.meme-forge .status {
+  font-family: var(--font-mono);
+  font-size: 15px; letter-spacing: 1px;
+  color: var(--acid);
+  margin-top: 10px;
+  min-height: 18px;
+  text-align: center;
+}
+
+/* preview + download */
+.meme-forge .preview-wrap { margin-top: 20px; text-align: center; }
+.meme-forge .preview-wrap img,
+.meme-forge .preview-wrap canvas {
+  max-width: 100%;
+  border: 1px solid var(--kush);
+  box-shadow: 0 0 18px rgba(0,255,102,.25);
+  image-rendering: pixelated;
+}
+.meme-forge .download-btn { display: none; margin-top: 16px; text-align: center; }
+.meme-forge .download-btn a {
+  font-family: var(--font-display);
+  letter-spacing: 3px;
+  color: #000;
+  background: linear-gradient(135deg, var(--toxic), var(--acid));
+  border: 2px solid var(--acid);
+  padding: 13px 26px;
+  display: inline-block;
+  text-transform: uppercase;
+  box-shadow: 0 0 24px rgba(0,255,102,.55);
+  transition: transform .15s, box-shadow .15s;
+}
+.meme-forge .download-btn a:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 44px rgba(184,255,0,.85);
+}
+
+.forge-foot {
+  font-family: var(--font-pixel);
+  font-size: 9px; letter-spacing: 3px;
+  color: var(--kush);
+  margin-top: 18px;
+}
+
+.meme-forge .src-canvas-hidden { display: none; }
+
+@media (max-width: 560px) {
+  .meme-forge .forge-body { padding: 18px 14px 20px; }
+  .meme-forge .dropzone { padding: 26px 12px; }
+}
